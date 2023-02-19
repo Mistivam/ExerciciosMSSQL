@@ -1,0 +1,32 @@
+-- Exercício 04
+
+CREATE TABLE tb_empregados(
+	codigo_empregado INTEGER PRIMARY KEY IDENTITY (1,1) NOT NULL,
+	nome VARCHAR (200) NOT NULL,
+	numero_horas_trabalhadas NUMERIC (4,2) NOT NULL
+	);
+
+CREATE TABLE tb_departamento(
+	codigo_departamento INTEGER PRIMARY KEY IDENTITY (1,1) NOT NULL,
+	departamento VARCHAR (200) NOT NULL,
+	codigo_gerente INTEGER NOT NULL,
+	nome_gerente VARCHAR (200)
+	);
+
+CREATE TABLE tb_projeto(
+	codigo_projeto INTEGER PRIMARY KEY IDENTITY (1,1) NOT NULL,
+	nome_projeto VARCHAR (200) NOT NULL,
+	data_inicio DATE NOT NULL,
+	data_fim DATE,
+	codigo_departamento INTEGER NOT NULL,
+	departamento VARCHAR (200) NOT NULL,
+	codigo_gerente INTEGER NOT NULL,
+	nome_gerente VARCHAR (200) NOT NULL,
+	codigo_empregado INTEGER NOT NULL
+	);
+
+ALTER TABLE tb_projeto ADD CONSTRAINT FK_codigo_empregado FOREIGN KEY (codigo_empregado)
+	REFERENCES tb_empregados (codigo_empregado);
+
+ALTER TABLE tb_projeto ADD CONSTRAINT FK_codigo_departamento FOREIGN KEY (codigo_departamento)
+	REFERENCES tb_departamento (codigo_departamento);
