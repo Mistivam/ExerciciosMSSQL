@@ -28,7 +28,7 @@ CREATE TABLE tb_consulta (
 
 CREATE TABLE tb_exame (
 	numero_consulta INTEGER NOT NULL,
-	exame VARCHAR (200) NOT NULL, --estou supondo ser ser o tipo de exame. Ex: exame de sangue
+	exame VARCHAR (200) NOT NULL, --estou supondo ser o tipo de exame. Ex: exame de sangue
 	data_exame DATE NOT NULL
 	);
 
