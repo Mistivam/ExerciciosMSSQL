@@ -1,0 +1,29 @@
+-- Exercício 03
+
+CREATE TABLE tb_fornecedores(
+	codigo_fornecedor INTEGER PRIMARY KEY IDENTITY (1,1) NOT NULL,
+	nome_fornecedor VARCHAR (200) NOT NULL,
+	endereco_fornecedor VARCHAR (200)
+	);
+
+CREATE TABLE tb_materiais(
+	codigo_material INTEGER PRIMARY KEY IDENTITY (1,1) NOT NULL,
+	descricao VARCHAR (100) NOT NULL,
+	quantidade INTEGER NOT NULL,
+	valor_unitario NUMERIC (15,2) NOT NULL,
+	valor_total_item NUMERIC (15,2) NOT NULL,
+	valor_total_ordem_compra NUMERIC (15,2) NOT NULL
+	);
+
+CREATE TABLE tb_ordem_de_compra(
+	codigo_ordem_compra INTEGER PRIMARY KEY IDENTITY (1,1) NOT NULL,
+	data_emissao DATE NOT NULL,
+	codigo_fornecedor INTEGER NOT NULL,
+	codigo_material INTEGER NOT NULL
+	);
+
+ALTER TABLE tb_ordem_de_compra ADD CONSTRAINT FK_codigo_fornecedor FOREIGN KEY (codigo_fornecedor)
+	REFERENCES tb_fornecedores (codigo_fornecedor);
+
+ALTER TABLE tb_ordem_de_compra ADD CONSTRAINT FK_codigo_material FOREIGN KEY (codigo_material)
+	REFERENCES tb_materiais (codigo_material);
